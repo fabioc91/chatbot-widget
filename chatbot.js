@@ -45,6 +45,7 @@
   // ---------------------------------------------------------------------------
   let aperto = false;
   let inAttesa = false;
+  let history = []; // memoria conversazione
 
   // ---------------------------------------------------------------------------
   // Stili
@@ -119,12 +120,12 @@
       background: ${CONFIG.colore}; color: ${CONFIG.coloreTesto};
       align-self: flex-end; border-bottom-right-radius: 4px;
     }
-    .cb-msg.typing { opacity: .6; }
-    .cb-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%;
-      background: #888; margin: 0 2px; animation: cb-bounce .9s infinite; }
-    .cb-dot:nth-child(2) { animation-delay: .15s; }
-    .cb-dot:nth-child(3) { animation-delay: .3s; }
-    @keyframes cb-bounce { 0%,80%,100%{ transform:translateY(0) } 40%{ transform:translateY(-5px) } }
+    .cb-msg.typing { opacity: 1; background: #f4f4f5 !important; padding: 12px 16px !important; }
+    .cb-dot { display: inline-block !important; width: 8px !important; height: 8px !important; border-radius: 50% !important;
+      background: #8b5e83 !important; margin: 0 3px !important; animation: cb-bounce .9s infinite !important; }
+    .cb-dot:nth-child(2) { animation-delay: .15s !important; }
+    .cb-dot:nth-child(3) { animation-delay: .3s !important; }
+    @keyframes cb-bounce { 0%,80%,100%{ transform:translateY(0) } 40%{ transform:translateY(-8px) } }
 
     /* Input */
     #cb-footer {
@@ -270,7 +271,7 @@
       const res = await fetch(`${CONFIG.apiUrl}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: testo }),
+        body: JSON.stringify({ message: testo, history: history }),
       });
 
       rimuoviTyping();
@@ -281,6 +282,11 @@
 
       const data = await res.json();
       aggiungiMessaggio(data.answer, "bot");
+
+      // Aggiorna memoria conversazione
+      history.push({ role: "user", content: testo });
+      history.push({ role: "assistant", content: data.answer });
+      if (history.length > 12) history = history.slice(-12); // mantieni ultimi 6 scambi
     } catch (err) {
       rimuoviTyping();
       aggiungiMessaggio(
