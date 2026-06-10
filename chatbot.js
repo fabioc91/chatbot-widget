@@ -112,16 +112,17 @@
     .cb-msg-wrap.user .cb-label { color: #777 !important; }
 
     .cb-msg {
-      max-width: 82%; padding: 10px 13px;
-      border-radius: 16px; font-size: 13.5px; line-height: 1.5;
-      word-break: break-word;
+      max-width: 82% !important; padding: 10px 13px !important;
+      border-radius: 16px !important; font-size: 13.5px !important; line-height: 1.6 !important;
+      word-break: break-word !important;
     }
+    .cb-msg b { font-weight: 700 !important; }
     .cb-msg.bot {
-      background: #e8e8e9; color: #1a1a1a;
+      background: #e8e8e9 !important; color: #1a1a1a !important;
       border-bottom-left-radius: 4px;
     }
     .cb-msg.user {
-      background: ${CONFIG.colore}; color: ${CONFIG.coloreTesto};
+      background: ${CONFIG.colore} !important; color: #fff !important;
       border-bottom-right-radius: 4px;
     }
     .cb-msg.typing { opacity: 1; background: #f4f4f5 !important; padding: 12px 16px !important; }
