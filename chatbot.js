@@ -123,7 +123,7 @@
       word-break: break-word;
     }
     .cb-msg.bot {
-      background: #f4f4f5; color: #1a1a1a;
+      background: #e8e8e9; color: #1a1a1a;
       border-bottom-left-radius: 4px;
     }
     .cb-msg.user {
