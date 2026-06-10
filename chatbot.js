@@ -218,7 +218,12 @@
   function aggiungiMessaggio(testo, tipo) {
     const div = document.createElement("div");
     div.className = `cb-msg ${tipo}`;
-    div.textContent = testo;
+    // I messaggi bot possono contenere HTML (<b>, <br>) — i messaggi utente vengono escaped
+    if (tipo === "bot") {
+      div.innerHTML = testo;
+    } else {
+      div.textContent = testo;
+    }
     messaggiEl.appendChild(div);
     messaggiEl.scrollTop = messaggiEl.scrollHeight;
     return div;
@@ -248,7 +253,7 @@
   function mostraBenvenuto() {
     if (messaggiEl.children.length === 0) {
       aggiungiMessaggio(
-        "Ciao! 👋 Sono l'assistente del centro benessere. Posso aiutarti con informazioni su trattamenti, prezzi e orari. Come posso aiutarti?",
+        "Ciao! Sono l'assistente del centro benessere. Posso aiutarti con informazioni su trattamenti, prezzi e orari. Come posso aiutarti?",
         "bot"
       );
     }
