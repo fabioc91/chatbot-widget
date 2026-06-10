@@ -78,18 +78,19 @@
 
     /* Header */
     #cb-header {
-      background: ${CONFIG.colore}; color: ${CONFIG.coloreTesto};
+      background: ${CONFIG.colore} !important; color: ${CONFIG.coloreTesto} !important;
       padding: 14px 16px; display: flex; align-items: center; gap: 10px;
     }
     #cb-avatar {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: rgba(255,255,255,.25);
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(255,255,255,.15) !important;
+      border: 1.5px solid rgba(255,255,255,.3);
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
-    #cb-avatar svg { width: 20px; height: 20px; fill: ${CONFIG.coloreTesto}; }
+    #cb-avatar svg { width: 22px; height: 22px; fill: #fff !important; }
     #cb-header-testo { flex: 1; }
-    #cb-header-testo strong { display: block; font-size: 14px; line-height: 1.2; }
-    #cb-header-testo span { font-size: 11px; opacity: .8; }
+    #cb-header-testo strong { display: block !important; font-size: 14px !important; line-height: 1.2 !important; color: #fff !important; }
+    #cb-header-testo span { font-size: 11px !important; opacity: .75; color: #fff !important; }
     #cb-chiudi {
       background: none; border: none; color: ${CONFIG.coloreTesto};
       cursor: pointer; padding: 4px; opacity: .7; line-height: 0;
@@ -181,8 +182,9 @@
     <div id="cb-panel" role="dialog" aria-modal="true" aria-label="${CONFIG.titolo}">
       <div id="cb-header">
         <div id="cb-avatar">
+          <!-- Icona robot/AI assistant -->
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+            <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h3a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3h3V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2zm-4 9a1.5 1.5 0 0 0 0 3 1.5 1.5 0 0 0 0-3zm8 0a1.5 1.5 0 0 0 0 3 1.5 1.5 0 0 0 0-3zm-7 5h6v-1H9v1z"/>
           </svg>
         </div>
         <div id="cb-header-testo">
