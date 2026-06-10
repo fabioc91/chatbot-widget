@@ -112,10 +112,10 @@
     .cb-msg-wrap.user { align-items: flex-end; }
     .cb-msg-wrap.bot { align-items: flex-start; }
     .cb-label {
-      font-size: 11px; font-weight: 600; color: #aaa;
-      padding: 0 4px; letter-spacing: .02em;
+      font-size: 12px; font-weight: 700; color: #555;
+      padding: 0 4px; letter-spacing: .01em;
     }
-    .cb-msg-wrap.user .cb-label { color: #999; }
+    .cb-msg-wrap.user .cb-label { color: #777; }
 
     .cb-msg {
       max-width: 82%; padding: 10px 13px;
@@ -232,7 +232,7 @@
 
     const label = document.createElement("span");
     label.className = "cb-label";
-    label.textContent = tipo === "bot" ? "Unica" : "Tu";
+    label.textContent = tipo === "bot" ? "Unica:" : "Tu:";
 
     const div = document.createElement("div");
     div.className = `cb-msg ${tipo}`;
@@ -257,7 +257,7 @@
 
     const label = document.createElement("span");
     label.className = "cb-label";
-    label.textContent = "Unica";
+    label.textContent = "Unica:";
 
     const div = document.createElement("div");
     div.className = "cb-msg bot typing";
