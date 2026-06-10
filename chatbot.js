@@ -32,7 +32,7 @@
       titolo: "Assistente Centro Benessere",
       sottotitolo: "Come posso aiutarti?",
       placeholder: "Scrivi la tua domanda...",
-      colore: "#8b5e83",          // viola benessere — modifica liberamente
+      colore: "#1C1C1A",
       coloreTesto: "#ffffff",
       altezza: "460px",
       larghezza: "370px",
@@ -107,6 +107,15 @@
     #cb-messaggi::-webkit-scrollbar-track { background: transparent; }
     #cb-messaggi::-webkit-scrollbar-thumb { background: #ddd; border-radius: 4px; }
 
+    .cb-msg-wrap { display: flex; flex-direction: column; gap: 3px; }
+    .cb-msg-wrap.user { align-items: flex-end; }
+    .cb-msg-wrap.bot { align-items: flex-start; }
+    .cb-label {
+      font-size: 11px; font-weight: 600; color: #aaa;
+      padding: 0 4px; letter-spacing: .02em;
+    }
+    .cb-msg-wrap.user .cb-label { color: #999; }
+
     .cb-msg {
       max-width: 82%; padding: 10px 13px;
       border-radius: 16px; font-size: 13.5px; line-height: 1.5;
@@ -114,15 +123,15 @@
     }
     .cb-msg.bot {
       background: #f4f4f5; color: #1a1a1a;
-      align-self: flex-start; border-bottom-left-radius: 4px;
+      border-bottom-left-radius: 4px;
     }
     .cb-msg.user {
       background: ${CONFIG.colore}; color: ${CONFIG.coloreTesto};
-      align-self: flex-end; border-bottom-right-radius: 4px;
+      border-bottom-right-radius: 4px;
     }
     .cb-msg.typing { opacity: 1; background: #f4f4f5 !important; padding: 12px 16px !important; }
     .cb-dot { display: inline-block !important; width: 8px !important; height: 8px !important; border-radius: 50% !important;
-      background: #8b5e83 !important; margin: 0 3px !important; animation: cb-bounce .9s infinite !important; }
+      background: #1C1C1A !important; margin: 0 3px !important; animation: cb-bounce .9s infinite !important; }
     .cb-dot:nth-child(2) { animation-delay: .15s !important; }
     .cb-dot:nth-child(3) { animation-delay: .3s !important; }
     @keyframes cb-bounce { 0%,80%,100%{ transform:translateY(0) } 40%{ transform:translateY(-8px) } }
@@ -216,6 +225,13 @@
   // Helpers
   // ---------------------------------------------------------------------------
   function aggiungiMessaggio(testo, tipo) {
+    const wrap = document.createElement("div");
+    wrap.className = `cb-msg-wrap ${tipo}`;
+
+    const label = document.createElement("span");
+    label.className = "cb-label";
+    label.textContent = tipo === "bot" ? "Unica" : "Tu";
+
     const div = document.createElement("div");
     div.className = `cb-msg ${tipo}`;
     // I messaggi bot possono contenere HTML (<b>, <br>) — i messaggi utente vengono escaped
@@ -224,17 +240,30 @@
     } else {
       div.textContent = testo;
     }
-    messaggiEl.appendChild(div);
+
+    wrap.appendChild(label);
+    wrap.appendChild(div);
+    messaggiEl.appendChild(wrap);
     messaggiEl.scrollTop = messaggiEl.scrollHeight;
     return div;
   }
 
   function mostraTyping() {
+    const wrap = document.createElement("div");
+    wrap.className = "cb-msg-wrap bot";
+    wrap.id = "cb-typing";
+
+    const label = document.createElement("span");
+    label.className = "cb-label";
+    label.textContent = "Unica";
+
     const div = document.createElement("div");
     div.className = "cb-msg bot typing";
     div.innerHTML = '<span class="cb-dot"></span><span class="cb-dot"></span><span class="cb-dot"></span>';
-    div.id = "cb-typing";
-    messaggiEl.appendChild(div);
+
+    wrap.appendChild(label);
+    wrap.appendChild(div);
+    messaggiEl.appendChild(wrap);
     messaggiEl.scrollTop = messaggiEl.scrollHeight;
   }
 
