@@ -78,25 +78,22 @@
 
     /* Header */
     #cb-header {
-      background: ${CONFIG.colore} !important; color: ${CONFIG.coloreTesto} !important;
-      padding: 14px 16px; display: flex; align-items: center; gap: 10px;
+      background: ${CONFIG.colore} !important; color: #fff !important;
+      padding: 14px 16px !important; display: flex !important; align-items: center !important; gap: 10px !important;
     }
     #cb-avatar {
-      width: 38px; height: 38px; border-radius: 50%;
-      background: rgba(255,255,255,.15) !important;
-      border: 1.5px solid rgba(255,255,255,.3);
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      width: 38px !important; height: 38px !important; border-radius: 50% !important;
+      background: rgba(255,255,255,.18) !important;
+      border: 1.5px solid rgba(255,255,255,.35) !important;
+      display: flex !important; align-items: center !important; justify-content: center !important; flex-shrink: 0 !important;
     }
-    #cb-avatar svg { width: 22px; height: 22px; fill: #fff !important; }
-    #cb-header-testo { flex: 1; }
-    #cb-header-testo strong { display: block !important; font-size: 14px !important; line-height: 1.2 !important; color: #fff !important; }
-    #cb-header-testo span { font-size: 11px !important; opacity: .75; color: #fff !important; }
-    #cb-chiudi {
-      background: none; border: none; color: ${CONFIG.coloreTesto};
-      cursor: pointer; padding: 4px; opacity: .7; line-height: 0;
-    }
-    #cb-chiudi:hover { opacity: 1; }
-    #cb-chiudi svg { width: 18px; height: 18px; fill: currentColor; }
+    #cb-avatar svg { width: 22px !important; height: 22px !important; fill: #fff !important; display: block !important; }
+    #cb-header-testo { flex: 1 !important; }
+    #cb-header-testo strong { display: block !important; font-size: 14px !important; line-height: 1.2 !important; color: #fff !important; font-weight: 700 !important; }
+    #cb-header-testo span { display: block !important; font-size: 11px !important; color: rgba(255,255,255,.75) !important; margin-top: 1px !important; }
+    #cb-chiudi { background: none !important; border: none !important; color: #fff !important; cursor: pointer !important; padding: 4px !important; opacity: .7 !important; line-height: 0 !important; }
+    #cb-chiudi:hover { opacity: 1 !important; }
+    #cb-chiudi svg { width: 18px !important; height: 18px !important; fill: #fff !important; display: block !important; }
 
     /* Messaggi */
     #cb-messaggi {
@@ -108,14 +105,11 @@
     #cb-messaggi::-webkit-scrollbar-track { background: transparent; }
     #cb-messaggi::-webkit-scrollbar-thumb { background: #ddd; border-radius: 4px; }
 
-    .cb-msg-wrap { display: flex; flex-direction: column; gap: 3px; }
-    .cb-msg-wrap.user { align-items: flex-end; }
-    .cb-msg-wrap.bot { align-items: flex-start; }
-    .cb-label {
-      font-size: 12px; font-weight: 700; color: #555;
-      padding: 0 4px; letter-spacing: .01em;
-    }
-    .cb-msg-wrap.user .cb-label { color: #777; }
+    .cb-msg-wrap { display: flex !important; flex-direction: column !important; gap: 4px !important; }
+    .cb-msg-wrap.user { align-items: flex-end !important; }
+    .cb-msg-wrap.bot { align-items: flex-start !important; }
+    .cb-label { font-size: 11px !important; font-weight: 700 !important; color: #555 !important; padding: 0 2px !important; display: block !important; }
+    .cb-msg-wrap.user .cb-label { color: #777 !important; }
 
     .cb-msg {
       max-width: 82%; padding: 10px 13px;
